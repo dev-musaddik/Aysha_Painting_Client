@@ -99,7 +99,7 @@ const Home = () => {
                     <div className="aspect-square rounded-2xl overflow-hidden border-8 border-accent-200 relative group">
                       {/* Main Artwork Image */}
                       <img 
-                        src="/src/assets/hero_artwork_showcase.png" 
+                        src="/assets/hero_artwork_showcase.png" 
                         alt="Featured Artwork"
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       />
@@ -167,25 +167,25 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                image: '/src/assets/authentic_art_feature.png',
+                image: '/assets/authentic_art_feature.png',
                 title: t('authenticArt'),
                 description: t('authenticArtDesc'),
                 color: 'from-primary-500 to-primary-600'
               },
               {
-                image: '/src/assets/quality_assured_feature.png',
+                image: '/assets/quality_assured_feature.png',
                 title: t('qualityAssured'),
                 description: t('qualityAssuredDesc'),
                 color: 'from-secondary-500 to-secondary-600'
               },
               {
-                image: '/src/assets/safe_delivery_feature.png',
+                image: '/assets/safe_delivery_feature.png',
                 title: t('safeDelivery'),
                 description: t('safeDeliveryDesc'),
                 color: 'from-accent-500 to-accent-600'
               },
               {
-                image: '/src/assets/support_artists_feature.png',
+                image: '/assets/support_artists_feature.png',
                 title: t('supportArtists'),
                 description: t('supportArtistsDesc'),
                 color: 'from-primary-400 to-secondary-500'

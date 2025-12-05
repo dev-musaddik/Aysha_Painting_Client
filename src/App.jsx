@@ -22,6 +22,11 @@ import CustomDesign from './pages/CustomDesign';
 import Dashboard from './pages/admin/Dashboard';
 import ProductManagement from './pages/admin/ProductManagement';
 import OrderManagement from './pages/admin/OrderManagement';
+import UserManagement from './pages/admin/UserManagement';
+import LandingPageManagement from './pages/admin/LandingPageManagement';
+
+// Ad Landing Page (no navbar/footer)
+import AdLandingPage from './pages/AdLandingPage';
 
 /**
  * Main App Component with Artistic Effects
@@ -109,6 +114,9 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/custom-design" element={<CustomDesign />} />
+            
+            {/* Ad Landing Page - Public but not in navigation */}
+            <Route path="/ad/:slug" element={<AdLandingPage />} />
 
             {/* Protected Routes */}
             <Route
@@ -174,6 +182,22 @@ function App() {
               element={
                 <AdminRoute>
                   <OrderManagement />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/admin/users"
+              element={
+                <AdminRoute>
+                  <UserManagement />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/admin/landing-pages"
+              element={
+                <AdminRoute>
+                  <LandingPageManagement />
                 </AdminRoute>
               }
             />

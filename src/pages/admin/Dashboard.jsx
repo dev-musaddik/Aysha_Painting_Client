@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import api from '../../redux/api/apiService';
 import { useLanguage } from '../../i18n/LanguageContext';
 import Spinner from '../../components/common/Spinner';
-import { FiPackage, FiShoppingBag, FiUsers, FiDollarSign } from 'react-icons/fi';
+import { FiPackage, FiShoppingBag, FiUsers, FiDollarSign, FiExternalLink } from 'react-icons/fi';
 
 /**
  * Admin Dashboard Page
@@ -25,16 +25,17 @@ const Dashboard = () => {
 
   const fetchStats = async () => {
     try {
-      const [ordersRes, productsRes] = await Promise.all([
+      const [ordersRes, productsRes, userStatsRes] = await Promise.all([
         api.get('/api/orders/admin/all'),
         api.get('/api/products'),
+        api.get('/api/auth/admin/stats'),
       ]);
 
       setStats({
         totalProducts: productsRes.data.count || 0,
         totalOrders: ordersRes.data.count || 0,
         totalRevenue: ordersRes.data.totalRevenue || 0,
-        totalUsers: 0, // Would need a separate endpoint
+        totalUsers: userStatsRes.data.totalUsers || 0,
       });
     } catch (error) {
       console.error('Failed to fetch stats:', error);
@@ -111,7 +112,7 @@ const Dashboard = () => {
         {/* Quick Actions */}
         <div className="bg-white rounded-xl shadow-md p-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('quickActions')}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <Link
               to="/admin/products"
               className="p-4 border-2 border-primary-500 rounded-lg hover:bg-primary-50 transition text-center"
@@ -132,6 +133,13 @@ const Dashboard = () => {
             >
               <FiUsers className="w-8 h-8 mx-auto mb-2 text-orange-600" />
               <p className="font-medium text-gray-900">{t('manageUsers')}</p>
+            </Link>
+            <Link
+              to="/admin/landing-pages"
+              className="p-4 border-2 border-purple-500 rounded-lg hover:bg-purple-50 transition text-center"
+            >
+              <FiExternalLink className="w-8 h-8 mx-auto mb-2 text-purple-600" />
+              <p className="font-medium text-gray-900">Landing Pages</p>
             </Link>
           </div>
         </div>

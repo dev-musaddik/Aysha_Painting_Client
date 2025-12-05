@@ -33,7 +33,7 @@ const Modal = ({ isOpen, onClose, title, children, size = 'md' }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 animate-fade-in">
       {/* Backdrop */}
       <div
         className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"
@@ -42,11 +42,11 @@ const Modal = ({ isOpen, onClose, title, children, size = 'md' }) => {
 
       {/* Modal Content */}
       <div
-        className={`relative bg-white rounded-xl shadow-2xl ${sizes[size]} w-full max-h-[90vh] overflow-hidden animate-slide-up`}
+        className={`relative bg-white rounded-xl shadow-2xl ${sizes[size]} w-full max-h-[95vh] sm:max-h-[90vh] overflow-hidden animate-slide-up`}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b">
-          <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
+        <div className="flex items-center justify-between p-4 sm:p-6 border-b">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900">{title}</h2>
           <button
             onClick={onClose}
             className="p-2 hover:bg-gray-100 rounded-full transition"
@@ -56,7 +56,7 @@ const Modal = ({ isOpen, onClose, title, children, size = 'md' }) => {
         </div>
 
         {/* Body */}
-        <div className="p-6 overflow-y-auto max-h-[calc(90vh-140px)]">
+        <div className="p-4 sm:p-6 overflow-y-auto max-h-[calc(95vh-120px)] sm:max-h-[calc(90vh-140px)]">
           {children}
         </div>
       </div>

@@ -227,7 +227,7 @@ const ProductManagement = () => {
               </select>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Input
                 label="Base Price"
                 type="number"
@@ -297,7 +297,7 @@ const ProductManagement = () => {
                     setFormData({ ...formData, uploadingImages: null });
                   }
                 }}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="w-full px-4 py-3 sm:py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 text-base"
               />
               <p className="text-xs text-gray-500 mt-1">
                 Upload product images (automatically optimized). Large images will be resized.
@@ -305,7 +305,7 @@ const ProductManagement = () => {
               
               {/* Display uploaded images */}
               {formData.images && formData.images.length > 0 && (
-                <div className="mt-3 grid grid-cols-4 gap-2">
+                <div className="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {formData.images.map((url, index) => (
                     <div key={index} className="relative">
                       <img
@@ -336,29 +336,29 @@ const ProductManagement = () => {
               )}
             </div>
 
-            <div className="flex items-center space-x-4">
-              <label className="flex items-center">
+            <div className="flex flex-col sm:flex-row sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
+              <label className="flex items-center cursor-pointer">
                 <input
                   type="checkbox"
                   checked={formData.customizable}
                   onChange={(e) => setFormData({ ...formData, customizable: e.target.checked })}
-                  className="mr-2"
+                  className="mr-2 w-5 h-5 sm:w-4 sm:h-4"
                 />
                 <span className="text-sm text-gray-700">Customizable</span>
               </label>
 
-              <label className="flex items-center">
+              <label className="flex items-center cursor-pointer">
                 <input
                   type="checkbox"
                   checked={formData.featured}
                   onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
-                  className="mr-2"
+                  className="mr-2 w-5 h-5 sm:w-4 sm:h-4"
                 />
                 <span className="text-sm text-gray-700">Featured</span>
               </label>
             </div>
 
-            <div className="flex space-x-4 pt-4">
+            <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 pt-4">
               <Button type="submit" variant="primary" fullWidth>
                 {editingProduct ? 'Update Product' : 'Create Product'}
               </Button>
